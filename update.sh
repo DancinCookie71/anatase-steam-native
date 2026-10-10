@@ -8,5 +8,6 @@ if (( UID != 0 )); then
 fi
 
 cd "$(dirname "$0")"
-podman build --network=host --pull=always --file Containerfile --tag my-anatase .
-bootc switch --transport containers-storage "my-anatase"
+image="localhost/my-anatase:latest"
+podman build --network=host --pull=always --file Containerfile --tag "$image" .
+bootc switch --transport containers-storage "$image"
