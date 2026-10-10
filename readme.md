@@ -23,7 +23,7 @@ sudo bootc switch ghcr.io/<my-username>/my-anatase
 ```
 
 Afterwards, the automatic updater will pick it up and handle updates for you,
-or you can manually do `sudo bootc update`
+or you can manually do `sudo bootc update`.
 
 You can edit [build.yml](./.github/workflows/build.yml) to switch `my-anatase`
 to something else, enable build on pushes, and run the workflow on a schedule.
