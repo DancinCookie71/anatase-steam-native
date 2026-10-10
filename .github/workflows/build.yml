@@ -7,6 +7,9 @@ on:
     branches: [master]
   workflow_dispatch:
 
+env:
+  IMAGE_NAME: my-anatase
+
 permissions:
   contents: read
   packages: write
@@ -22,10 +25,28 @@ jobs:
           GHCR_TOKEN: ${{ secrets.GITHUB_TOKEN }}
         run: echo "$GHCR_TOKEN" | podman login ghcr.io -u "$GITHUB_ACTOR" --password-stdin
 
-      - name: Build and push
+      - name: Fetch image versions
         run: |
-          image="ghcr.io/${GITHUB_REPOSITORY_OWNER,,}/my-anatase:latest"
+          base_image=$(grep -im1 '^[[:space:]]*FROM[[:space:]]' Containerfile | awk '{print $2}')
+          image="ghcr.io/${GITHUB_REPOSITORY_OWNER,,}/${IMAGE_NAME}:latest"
+
+          version=$(skopeo inspect --no-tags "docker://$base_image" | \
+            jq -er '.Labels["org.opencontainers.image.version"] | select(type == "string" and length > 0)')
+
+          published_version=$(skopeo inspect --no-tags "docker://$image" | \
+            jq -r '.Labels["org.anatase.version"] // ""' || true)
+
+          {
+            echo "IMAGE=$image"
+            echo "ANATASE_VERSION=$version"
+            echo "VERSION_MATCH=$([[ "$version" == "$published_version" ]] && echo true || echo false)"
+          } >> "$GITHUB_ENV"
+
+      - name: Build and push
+        if: env.VERSION_MATCH != 'true'
+        run: |
           podman build --pull=always --file Containerfile \
+            --label "org.anatase.version=$ANATASE_VERSION" \
             --label "org.opencontainers.image.source=https://github.com/$GITHUB_REPOSITORY" \
-            --tag "$image" .
-          podman push "$image"
+            --tag "$IMAGE" .
+          podman push "$IMAGE"
