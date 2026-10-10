@@ -4,7 +4,7 @@ Make your own custom Anatase image! Anatase is designed to be lean and unopinion
 Anatase is a normal container image you can download from `i.anatase.org/anatase:stable` and then add your own packages. It is based on the latest version of Fedora, so anything you would install or modify on a fedora container you can do here. In this repository, you can find a template containerfile for building your own image.
 
 ## Using the template
-To use this template, clone this repository:
+To use this template, select `Use this template`, clone it, or clone this repository:
 ```bash
 git clone https://github.org/anatase-org/template my-anatase
 cd my-anatase
