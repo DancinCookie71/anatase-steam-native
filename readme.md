@@ -10,7 +10,7 @@ git clone https://github.org/anatase-org/template my-anatase
 cd my-anatase
 ```
 
-Then, customize `Containerfile` to your liking. When done, if on an Anatase system, you can run `./update.sh` from the terminal to update to that image and run it again periodically to access the latest versions.
+Then, customize `Containerfile` to your liking. When done, if on an Anatase system, you can run `./update.sh` from the terminal to update to that image and run it again periodically to access the latest versions. Do not run `./update.sh` in Spaces. If your IDE is in a Space, open the folder using a host terminal and run it there.
 
 ### On Github actions
 A [build.yml](./.github/workflows/build.yml) Github workflow is provided that allows you to go to your fork,
