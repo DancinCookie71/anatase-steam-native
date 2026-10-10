@@ -70,7 +70,7 @@ jobs:
         # Only build on hash or version changes
         if: env.VERSION_MATCH != 'true' || env.COMMIT_MATCH != 'true'
         run: |
-          podman build --pull=always --file Containerfile \
+          podman build --pull=always --squash --file Containerfile \
             --label "org.anatase.version=$ANATASE_VERSION" \
             --label "org.opencontainers.image.revision=$GITHUB_SHA" \
             --label "org.opencontainers.image.source=https://github.com/$GITHUB_REPOSITORY" \
