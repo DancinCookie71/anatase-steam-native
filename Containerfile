@@ -1,10 +1,10 @@
 FROM i.anatase.org/anatase:stable
 
 # Do your thing...
-RUN  dnf install dnf-plugins-core \
-    && dnf copr enable codifryed/CoolerControl \
-    && dnf install coolercontrol \
-    && systemctl enable --now coolercontrold
+RUN dnf -y install dnf-plugins-core \
+    && dnf -y copr enable codifryed/CoolerControl \
+    && dnf -y install coolercontrol \
+    && systemctl enable coolercontrold
 
-RUN dnf clean all &&
+RUN dnf clean all && \
     rm -rf /var/cache
