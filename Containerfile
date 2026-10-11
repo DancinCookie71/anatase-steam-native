@@ -13,5 +13,5 @@ FROM i.anatase.org/anatase:stable
 
 # Cleanup (leave this here)
 RUN dnf clean all && \
-    rm -rf /var /home /root && \
+    rm -rf /var && \
     mkdir -p /var/tmp
