@@ -12,6 +12,5 @@ FROM i.anatase.org/anatase:stable
 #     systemctl enable coolercontrold
 
 # Cleanup (leave this here)
-RUN dnf clean all && \
-    rm -rf /var && \
+RUN rm -rf /var && \
     mkdir -p /var/tmp
