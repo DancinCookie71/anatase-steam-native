@@ -16,7 +16,7 @@ on:
   
   # Enable below to run this action when you push changes
   # push:
-  #   branches: [master]
+  #   branches: [master, main]
 
   # This allows you to manually run the action through the GitHub Actions UI
   workflow_dispatch:
