@@ -8,10 +8,8 @@ Anatase is a normal container image you can download from `i.anatase.org/anatase
 
 Anatase also provides a base image (`i.anatase.org/base:stable`) which is the same Anatase you know with gamemode, Nvidia drivers, and everything included, but without KDE. This way, you can add your own Desktop Environment and experiment with tiling managers, Gnome, Cosmic, or anything else. The base image is built with the same tested packages as the main image so it is a perfect environment to become your own distribution builder and learn about containers.
 
-> [!NOTE]
->
-> The base image is part of the next Anatase release for Fedora 45. substitute `:stable` for `:rolling` if you want to try it out. There
-> is no stable flatpak remote for Fedora 45, so installing or updating Anatase flatpaks will not work until the next release.
+> [!WARNING]
+> The base image is part of the next Anatase release for Fedora 45. Substitute `:stable` for `:rolling` if you want to try it out. There is no stable flatpak remote for Fedora 45, so installing or updating Anatase flatpaks will not work until the next release **and stay on Anatase rolling**.
 
 ## Using the template
 To use this template, select `Use this template`, clone it, or clone this repository:
@@ -49,7 +47,7 @@ Gnome supports selecting a session only if you have a password set (gear on the 
 
 Anatase uses kwallet for secret management. When you switch desktop environments you will lose your secrets, such as various logins in browsers and your IDE credentials (VS Code uses it for your Github login). The examples use the new secret manager oo7, but it is not ready for KDE at this time. This means you can switch through them without losing your secrets.
 
-Lightdm (the Greeter used by Cinnamon and XFCE) does not respect the panel rotation reported by the kernel, so the Steam Deck has the login screen rotated 90 degrees (other portrait panels as well). They also do not associate the touchscreen correctly, so rotating the screen breaks the touchscreen. It also does not re-initialize properly when exiting gamemode so you will get a black screen (PRs welcome if you fix it). Without a virtual keyboard, you cannot log in on handhelds.
+Lightdm (the Greeter used by Cinnamon and XFCE) does not respect the panel rotation reported by the kernel, so the Steam Deck has the login screen rotated 90 degrees (other portrait panels as well). They also do not associate the touchscreen correctly, so rotating the screen breaks the touchscreen. It does not re-initialize properly when exiting gamemode so you will get a black screen (PRs welcome if you fix it). Without a virtual keyboard, you cannot log in on handhelds.
 
 Cosmic's first boot dialog does not scale properly on handhelds, so you will not be able to complete it without an external display.
 
