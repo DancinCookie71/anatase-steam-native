@@ -34,6 +34,9 @@ Afterwards, the automatic updater will pick it up and handle updates for you, or
 
 You can edit [build.yml](./.github/workflows/build.yml) to switch `my-anatase` to something else, enable build on pushes, and run the workflow on a schedule.
 
+> [!NOTE]
+> **Remember:** use `FROM i.anatase.org/base:stable` when you want to use a different Desktop Environment. To extend Anatase, use `FROM i.anatase.org/anatase:stable` 
+
 ## Examples
 
 In the [`./examples`](./examples/) folder, you will find Containerfiles for inspiration, such as one for Gnome. Feel free to experiment and then PR new examples as well!
