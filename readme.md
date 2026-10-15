@@ -23,22 +23,23 @@ cd my-anatase
 Then, customize `Containerfile` to your liking. When done, if on an Anatase system, you can run `./update.sh` from the terminal to update to that image and run it again periodically to access the latest versions. Do not run `./update.sh` in Spaces. If your IDE is in a Space, open the folder using a host terminal and run it there.
 
 ### On Github actions
-A [build.yml](./.github/workflows/build.yml) Github workflow is provided that allows you to go to your fork,
-select `Actions > Build Custom Image > Run Workflow`. This will build the
-image and upload it under `ghcr.io/<your-username>/my-anatase`.
+A [build.yml](./.github/workflows/build.yml) Github workflow is provided that allows you to go to your fork, select `Actions > Build Custom Image > Run Workflow`. This will build the image and upload it under `ghcr.io/<your-username>/my-anatase`.
 
 Then, you can switch to it with:
 ```bash
 sudo bootc switch ghcr.io/<my-username>/my-anatase
 ```
 
-Afterwards, the automatic updater will pick it up and handle updates for you,
-or you can manually do `sudo bootc update`.
+Afterwards, the automatic updater will pick it up and handle updates for you, or you can manually do `sudo bootc update`.
 
-You can edit [build.yml](./.github/workflows/build.yml) to switch `my-anatase`
-to something else, enable build on pushes, and run the workflow on a schedule.
+You can edit [build.yml](./.github/workflows/build.yml) to switch `my-anatase` to something else, enable build on pushes, and run the workflow on a schedule.
 
 ## Examples
 
-In the [`./examples`](./examples/) folder, you will find Containerfiles for inspiration, such
-as one for Gnome. Feel free to experiment and then PR new examples as well!
+In the [`./examples`](./examples/) folder, you will find Containerfiles for inspiration, such as one for Gnome. Feel free to experiment and then PR new examples as well!
+
+## Frequently Asked Questions
+The base image does not include a "Return to Gamemode" shortcut or autologin
+settings in Handheld Daemon as they are KDE specific. You can configure your Desktop Environment to autologin to "Gamemode" instead.
+
+Gnome supports selecting a session only if you have a password set (gear on the bottom right), otherwise it automatically logs in and blocks you from accessing the button. This is a Gnome issue.
