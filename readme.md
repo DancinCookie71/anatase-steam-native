@@ -3,6 +3,13 @@ Make your own custom Anatase image! Anatase is designed to be lean and unopinion
 
 Anatase is a normal container image you can download from `i.anatase.org/anatase:stable` and then add your own packages. It is based on the latest version of Fedora, so anything you would install or modify on a fedora container you can do here. In this repository, you can find a template containerfile for building your own image.
 
+Anatase also provides a base image (`i.anatase.org/base:stable`) which is the same Anatase you know with gamemode, Nvidia drivers, and everything included, but without KDE. This way, you can add your own Desktop Environment and experiment with tiling managers, Gnome, Cosmic, or anything else. The base image is built with the same tested packages as the main image so it is a perfect environment to become your own distribution builder and learn about containers.
+
+> [!NOTE]
+>
+> The base image is part of the next Anatase release for Fedora 45. substitute `:stable` for `:rolling` if you want to try it out. There
+> is no stable flatpak remote for Fedora 45, so installing or updating Anatase flatpaks will not work until the next release.
+
 ## Using the template
 To use this template, select `Use this template`, clone it, or clone this repository:
 ```bash
@@ -27,3 +34,8 @@ or you can manually do `sudo bootc update`.
 
 You can edit [build.yml](./.github/workflows/build.yml) to switch `my-anatase`
 to something else, enable build on pushes, and run the workflow on a schedule.
+
+## Examples
+
+In the [`./examples`](./examples/) folder, you will find Containerfiles for inspiration, such
+as one for Gnome. Feel free to experiment and then PR new examples as well!
