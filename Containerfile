@@ -1,15 +1,8 @@
 FROM i.anatase.org/anatase:stable
 
-# Do your thing...
-# Install btop
-# RUN dnf -y install btop
-
-# Install coolercontrol
-# # For COPRs specify fedora-* as dnf will try to look for an anatase COPR
-# RUN . /etc/os-release && \
-#     dnf -y copr enable codifryed/CoolerControl "fedora-${VERSION_ID}-$(arch)" && \
-#     dnf -y install coolercontrol && \
-#     systemctl enable coolercontrold
+# Add Negativo17 Steam Repo & Install Native Steam
+RUN dnf config-manager --add-repo https://negativo17.org/repos/fedora-steam.repo && \
+    dnf -y install steam
 
 # Cleanup (leave this here)
 RUN rm -rf /var && \
